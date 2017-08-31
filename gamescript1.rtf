@@ -1,161 +1,0 @@
-{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf470
-{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
-\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
-
-\f0\fs24 \cf0 WinActivate("[V94] SpawnPK")\
-\
-HotKeySet("\{ESC\}", "End")\
-\
-Global $pixel\
-\
-PrayCheckMage()\
-CameraAngle()\
-ScriptEle()\
-\
-Func PrayCheckMage()\
-   Send("\{F3\}")\
-   Sleep(250)\
-   $ppixel = PixelSearch(739,584,741,586,0xB7A36D,10,0)\
-   if IsArray($ppixel) = False Then\
-	  MouseClick("left",729,583)\
-   EndIf\
-   $ppixel = PixelSearch(729,668,731,670,0xB7A36D,10,0)\
-   If IsArray($ppixel) = False Then\
-	  MouseClick("left",729,655)\
-   EndIf\
-   Send("\{F1\}")\
-EndFunc\
-\
-Func PrayCheckMelee()\
-   Send("\{F3\}")\
-   Sleep(250)\
-   $ppixel = PixelSearch(809,592,811,594,0xB7A36D,10,0)\
-   if IsArray($ppixel) = False Then\
-	  MouseClick("left",810,593)\
-   EndIf\
-   $ppixel = PixelSearch(729,668,731,670,0xB7A36D,10,0)\
-   If IsArray($ppixel) = False Then\
-	  MouseClick("left",729,655)\
-   EndIf\
-   Send("\{F1\}")\
-EndFunc\
-\
-Func CameraAngle()\
-   MouseClick("left",725,181)\
-   MouseClickDrag("middle",477,558,477,263,1)\
-   MouseClickDrag("middle",75,343,430,343,1)\
-   $pixel = PixelSearch(238,275,441,426,0x97A2BA,5,0)\
-   While IsArray($pixel) = False\
-	  $pixel = PixelSearch(238,275,441,426,0x97A2BA,5,0)\
-   WEnd\
-EndFunc\
-\
-Func ScriptEle()\
-   Local $cycles = 0\
-   While 1\
-	  MouseClick("right",$pixel[0],$pixel[1])\
-	  ;$pixel = PixelSearch(78,164,448,477,0xA8B1BF,10,0)\
-	  ;if IsArray($pixel) = True Then\
-		 ;MouseClick("right",$pixel[0],$pixel[1])\
-	  ;else\
-		 ;While IsArray($pixel) = False\
-			;$pixel = PixelSearch(78,164,448,477,0xA8B1BF,10,0)\
-			;If IsArray($pixel) = False Then\
-			   ;MouseClick("left",819,250)\
-			   ;Sleep(5000)\
-			;EndIf\
-			;$pixel = PixelSearch(78,164,448,477,0xA8B1BF,10,0)\
-			;if IsArray($pixel) = False Then\
-			   ;Exit\
-			;EndIf\
-		 ;WEnd\
-	  ;EndIf\
-	  sleep(250)\
-	  $pixel2 = PixelSearch($pixel[0]-91,$pixel[1]+10,$pixel[0]+91,587,0x00FF00,0,0)\
-	  if IsArray($pixel2) = True Then\
-		 MouseClick("left",$pixel2[0],$pixel2[1])\
-		 $sspixel = PixelSearch(145,280,454,498,0x383027,0,0)\
-		 While IsArray($sspixel) = False\
-			$sspixel = PixelSearch(145,280,454,498,0x383027,0,0)\
-		 WEnd\
-		 $spixel = PixelSearch(305,352,306,353,0x484050,10,0)\
-		 If IsArray($spixel) = False Then\
-			MouseClick("left",523,351)\
-		 EndIf\
-		 MouseClick("left",238,453)\
-		 WinSetState("[V94] SpawnPK","",@SW_MINIMIZE) ;hide\
-		 sleep(152500)\
-		 WinActivate("[V94] SpawnPK") ;hide\
-		 sleep(250)\
-		 Send("\{F1\}")\
-		 MouseClick("left",826,482)\
-		 MouseClick("left",871,387)\
-		 MouseClick("left",845,387)\
-		 Send("::stop\{ENTER\}",0)\
-		 sleep(500)\
-		 $pixel2 = Null\
-		 $cycles += 1\
-		 ConsoleWrite($cycles & @LF)\
-	  Else\
-		 CameraAngle()\
-	  EndIf\
-   WEnd\
-EndFunc\
-\
-Func ScriptBC()\
-   Local $cycles = 0\
-   While 1\
-	  MouseClick("right",$pixel[0],$pixel[1])\
-	  ;$pixel = PixelSearch(78,164,448,477,0xA8B1BF,10,0)\
-	  ;if IsArray($pixel) = True Then\
-		 ;MouseClick("right",$pixel[0],$pixel[1])\
-	  ;else\
-		 ;While IsArray($pixel) = False\
-			;$pixel = PixelSearch(78,164,448,477,0xA8B1BF,10,0)\
-			;If IsArray($pixel) = False Then\
-			   ;MouseClick("left",819,250)\
-			   ;Sleep(5000)\
-			;EndIf\
-			;$pixel = PixelSearch(78,164,448,477,0xA8B1BF,10,0)\
-			;if IsArray($pixel) = False Then\
-			   ;Exit\
-			;EndIf\
-		 ;WEnd\
-	  ;EndIf\
-	  sleep(250)\
-	  $pixel2 = PixelSearch($pixel[0]-91,$pixel[1]+10,$pixel[0]+91,587,0x00FF00,0,0)\
-	  if IsArray($pixel2) = True Then\
-		 MouseClick("left",$pixel2[0],$pixel2[1])\
-		 $sspixel = PixelSearch(145,280,454,498,0x383027,0,0)\
-		 While IsArray($sspixel) = False\
-			$sspixel = PixelSearch(145,280,454,498,0x383027,0,0)\
-		 WEnd\
-		 $spixel = PixelSearch(305,352,306,353,0x54544D,10,0)\
-		 If IsArray($spixel) = False Then\
-			MouseClick("left",523,368)\
-		 EndIf\
-		 MouseClick("left",238,453)\
-		 WinSetState("[V94] SpawnPK","",@SW_MINIMIZE) ;hide\
-		 sleep(200000)\
-		 WinActivate("[V94] SpawnPK") ;hide\
-		 sleep(250)\
-		 Send("\{F1\}")\
-		 MouseClick("left",826,482)\
-		 MouseClick("left",871,387)\
-		 MouseClick("left",845,387)\
-		 Send("::stop\{ENTER\}",0)\
-		 sleep(500)\
-		 $pixel2 = Null\
-		 $cycles += 1\
-		 ConsoleWrite($cycles & @LF)\
-	  Else\
-		 CameraAngle()\
-	  EndIf\
-   WEnd\
-EndFunc\
-\
-Func End()\
-   Exit\
-EndFunc}

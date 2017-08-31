@@ -1,0 +1,22 @@
+#include <Misc.au3>
+
+Local $hDLL = DllOpen("user32.dll")
+
+HotKeySet("{ESC}","End")
+
+Yells()
+
+Func Yells()
+   While 1
+	  If _IsPressed("75", $hDLL) Then
+		 Send("")
+	  EndIf
+	  If _IsPressed("76", $hDLL) Then
+		 Send("@mag@<shad=0000ff>")
+	  EndIf
+   WEnd
+EndFunc
+
+Func End()
+   Exit
+EndFunc
