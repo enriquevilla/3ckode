@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unidas Contigo</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="layout.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    </head>
+    <body>
+        <div class="header">
+        <h1><img src="https://scontent.fmfe1-1.fna.fbcdn.net/v/t1.0-9/30127277_1923359191038940_1027263384434769920_n.jpg?_nc_cat=0&oh=7fcd3ad969fb75aba2e1d9a6a206aa1d&oe=5B5FF1CF" style="width: 25%"></h1>
+        </div>
+        <div class="form-style-5">
+        <form method="post" enctype="multipart/form-data" action="/agregarPaciente">
+            <h2><label>Agregar Paciente</label></h2>
+            <label>Nombre</label>
+                <input type="text" name="nombre" placeholder="Nombre"required><br>
+            <label>Edad</label>
+                <input type="text" name="edad" placeholder="Edad" required><br>
+            <label>Estado Civil</label>
+                <select name="estadoCivil" required>
+                    <option value="Soltera">Soltero/a</option>
+                    <option value="Casada">Casado/a</option>
+                    <option value="Viuda">Viudo/a</option>
+                    <option value="Divorciada">Divorciado/a</option>
+                    <option value="Comprometida">Comprometido/a</option>
+                </select><br>
+            <label>Hijos</label>
+                <input type="text" name="hijos" placeholder="Hijos" required><br>
+            <label>Teléfono</label>
+                <input type="text" name="telefono" placeholder="Teléfono" required><br>
+            <label>Calle</label>
+                <input type="text" name="calle" placeholder="Calle" required><br>
+            <label>Colonia</label>
+                <input type="text" name="colonia" placeholder="Colonia" required><br>
+            <label>Municipio</label>
+                <input type="text" name="municipio" placeholder="Municipio" required><br>
+            <label>Código Postal</label>
+                <input type="text" name="codigoPostal" placeholder="Código Postal" required><br>
+            <label>Correo Electrónico</label>
+                <input type="text" name="email" placeholder="Correo Electrónico" required><br>
+            <label>Llenado por</label>
+                <input type="text" name="llenado" placeholder="Llenado por" required><br>
+            <label>Diagnóstico</label>
+                <textarea rows="10" cols="50" name="diagnostico" placeholder="Diagnóstico" required></textarea><br>
+            <label>Fecha de cirugía</label>
+                <input type="date" name="fechaCirugia" placeholder="Fecha de cirugía" required><br>
+            <label>Avance del tratamiento</label>
+                <textarea rows="10" cols="50" name="avanceTratamiento" placeholder="Avance del tratamiento" required></textarea><br>
+            <label>Familiar de contacto</label>
+            <label>Nombre</label>
+                <input type="text" name="familiarNombre" placeholder="Nombre de familiar" required><br>
+            <label>Teléfono</label>
+                <input type="text" name="familiarTelefono" placeholder="Teléfono de familiar" required><br>
+            <label>Recomendada por</label>
+                <input type="text" name="recomendada" placeholder="Recomendada por" required><br>
+            <label>Servicio Médico</label>
+                <textarea rows="10" cols="50" name="servicioMedico" placeholder="Servicio Médico" required></textarea><br><br>
+            <label>Seguro Médico</label>
+                    <input type="checkbox" name="seguroMedico" id="IMSS" value="IMSS"> IMSS<br>
+                    <input type="checkbox" name="seguroMedico" id="ISSTE" value="ISSTE"> ISSTE<br>
+                    <input type="checkbox" name="seguroMedico" id="SPopular" value="SPopular"> Seguro Popular<br><br>
+            <label>Médico tratante</label>
+                <input type="text" name="medicoTratante" placeholder="Médico tratante" required><br>
+            <label>Tipo de asistencia</label>
+                    <input type="checkbox" name="asistenciaPaciente" value="Paciente"> Paciente<br>
+                    <input type="checkbox" name="asistenciaImagen" value="Imagen"> Imagen<br><br>
+            <label>Copia de INE</label>
+                    <input type="file" name="ine" accept="image/*"><br><br>
+            <label>Copia de comprobante de domicilio</label>
+                    <input type="file" name="comprobante" accept="image/*"><br>
+                    <br>
+            <label>Folio</label>
+                    <input type="text" name="folio" placeholder="Folio" required><br><br>
+                    <input type="submit" value="Agregar">
+            </form>
+            </div>
+    </body>
+</html>
