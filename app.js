@@ -70,7 +70,7 @@ app.post("/agregarPaciente", (req, res) => {
             // agregar la información a un archivo csv en una carpeta para los excel
             var json2csvParser = new Json2csvParser(opts);
             const csv = json2csvParser.parse(myData);
-            var path = '/excels' + 'ReporteUnidasC.csv';
+            var path = '/excel' + 'ReporteUnidasC.csv';
             fs.appendFileSync(path, csv + "\n");
             console.log(csv);
         } catch (err) {
