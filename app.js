@@ -57,6 +57,7 @@ app.get("/", (req, res) => {
     res.sendFile(__dirname + "/public/index.html");
 });
 app.post("/agregarPaciente", (req, res) => {
+    // definir myData con todos los datos que se llenaron en la forma
     var myData = new Paciente(req.body);
     myData.save()
         .then(item => {
@@ -66,28 +67,33 @@ app.post("/agregarPaciente", (req, res) => {
             res.status(400).send("Error");
         });
         try {
+            // agregar la información a un archivo csv en una carpeta para los excel
             var json2csvParser = new Json2csvParser(opts);
             const csv = json2csvParser.parse(myData);
-            var path='./public/'+'ReporteUnidasC.csv';
+            var path = '/excels' + 'ReporteUnidasC.csv';
             fs.appendFileSync(path, csv + "\n");
             console.log(csv);
         } catch (err) {
             console.error(err);
              }
+             // mover la foto del INE a una carpeta donde se guardan las INE
+             // se define el nombre del archivo con el folio y el nombre de la persona
              if (req.files.ine) {
-        let ine = req.files.ine;
-        ine.mv("./uploadINE/" + req.body.folio + ' ' + req.body.nombre, function(err) {
+                let ine = req.files.ine;
+                ine.mv("./uploadINE/" + req.body.folio + ' ' + req.body.nombre, function(err) {
                 if (err) 
                     return res.status(500).send(err);
-            });
-        }
+                });
+            }
+            // mover la foto del comprobante a una carpeta donde se guardan los comprobantes
+            // se define el nombre del archivo con el folio y el nombre de la persona
             if (req.files.comprobante) {
-        let comp = req.files.comprobante;
-        comp.mv("./uploadComprobante/" + req.body.folio + ' ' + req.body.nombre, function(err) {
+                let comp = req.files.comprobante;
+                comp.mv("./uploadComprobante/" + req.body.folio + ' ' + req.body.nombre, function(err) {
                 if (err) 
                     return res.status(500).send(err);
-            }); 
-        }
+                }); 
+            }
 });
 
 app.listen(port, () => {
