@@ -69,7 +69,7 @@ app.post("/agregarPaciente", (req, res) => {
             var json2csvParser = new Json2csvParser(opts);
             const csv = json2csvParser.parse(myData);
             var path='./public/'+'ReporteUnidasC.csv';
-            fs.appendFileSync(path, csv);
+            fs.appendFileSync(path, csv + "\n");
             console.log(csv);
         } catch (err) {
             console.error(err);
