@@ -61,7 +61,7 @@ app.post("/agregarPaciente", (req, res) => {
     var myData = new Paciente(req.body);
     myData.save()
         .then(item => {
-            res.send("Paciente guardada");
+            res.send(req.body.nombre + " guardad@");
         })
         .catch(err => {
             res.status(400).send("Error");
@@ -70,7 +70,7 @@ app.post("/agregarPaciente", (req, res) => {
             // agregar la información a un archivo csv en una carpeta para los excel
             var json2csvParser = new Json2csvParser(opts);
             const csv = json2csvParser.parse(myData);
-            var path = '/excel' + 'ReporteUnidasC.csv';
+            var path = './excel/' + 'ReporteUnidasC.csv';
             fs.appendFileSync(path, csv + "\n");
             console.log(csv);
         } catch (err) {
