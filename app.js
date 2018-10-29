@@ -5,33 +5,27 @@ var port = 3000;
 var bodyParser = require('body-parser');
 var path = require('path');
 var fs = require('fs');
+var exec = require('child_process').exec;
 app.use(upload())
-app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'));
 var mongoose = require("mongoose");
-const Json2csvParser = require('json2csv').Parser;
 //Connect to mongodb
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://localhost:27017/unidasPacienteCopia");
+mongoose.connect("mongodb://localhost:27017/unidascontigo");
 mongoose.connection.once('open', function(){
-    console.log('Connection succesfull!');
+    console.log('Connection succesful!');
     }).on('error',function(error){
         console.log('Connection error!: ',error);
     });
 //create Schema
 //create model
-//JSON to CSV
-const fields = ['nombre', 'edad', 'estadoCivil', 'hijos','telefono', 'calle', 'colonia','municipio','codigoPostal','email','llenado',
-'diagnostico','fechaCirugia','avanceTratamiento','familiarNombre','recomendada','seguroMedico','medicoTratante','asistenciaPaciente',
-'folio'];
-const opts = { fields };
 var pacientes = new mongoose.Schema({
     nombre: String,
     edad: Number,
     estadoCivil: String,
     hijos: Number,
-    telefono: Number,
+    telefono: String,
     calle: String,
     colonia: String,
     municipio: String,
@@ -67,12 +61,10 @@ app.post("/agregarPaciente", (req, res) => {
             res.status(400).send("Error");
         });
         try {
-            // agregar la información a un archivo csv en una carpeta para los excel
-            var json2csvParser = new Json2csvParser(opts);
-            const csv = json2csvParser.parse(myData);
-            var path = './excel/' + 'ReporteUnidasC.csv';
-            fs.appendFileSync(path, csv + "\n");
-            console.log(csv);
+            // generar csv agregando los campos y datos por comando (macOS, no se si windows funcione)
+            var generaCSV = 'mongoexport --db unidascontigo --collection pacientes ' +
+            '--fieldFile ./excel/fields.csv --type csv --out ./excel/Reporte.csv';
+            exec(generaCSV);
         } catch (err) {
             console.error(err);
         }

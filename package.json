@@ -12,7 +12,7 @@
     "mongoose",
     "demo",
     "json2csv"
-    ],
+  ],
   "author": "Esteban",
   "license": "ISC",
   "dependencies": {
