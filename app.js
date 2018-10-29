@@ -75,25 +75,25 @@ app.post("/agregarPaciente", (req, res) => {
             console.log(csv);
         } catch (err) {
             console.error(err);
-             }
-             // mover la foto del INE a una carpeta donde se guardan las INE
-             // se define el nombre del archivo con el folio y el nombre de la persona
-             if (req.files.ine) {
-                let ine = req.files.ine;
-                ine.mv("./uploadINE/" + req.body.folio + ' ' + req.body.nombre, function(err) {
-                if (err) 
-                    return res.status(500).send(err);
-                });
-            }
-            // mover la foto del comprobante a una carpeta donde se guardan los comprobantes
-            // se define el nombre del archivo con el folio y el nombre de la persona
-            if (req.files.comprobante) {
-                let comp = req.files.comprobante;
-                comp.mv("./uploadComprobante/" + req.body.folio + ' ' + req.body.nombre, function(err) {
-                if (err) 
-                    return res.status(500).send(err);
-                }); 
-            }
+        }
+        // mover la foto del INE a una carpeta donde se guardan las INE
+        // se define el nombre del archivo con el folio y el nombre de la persona
+        if (req.files.ine) {
+            let ine = req.files.ine;
+            ine.mv("./uploadINE/" + req.body.folio + ' ' + req.body.nombre, function(err) {
+            if (err) 
+                return res.status(500).send(err);
+            });
+        }
+        // mover la foto del comprobante a una carpeta donde se guardan los comprobantes
+        // se define el nombre del archivo con el folio y el nombre de la persona
+        if (req.files.comprobante) {
+            let comp = req.files.comprobante;
+            comp.mv("./uploadComprobante/" + req.body.folio + ' ' + req.body.nombre, function(err) {
+            if (err) 
+                return res.status(500).send(err);
+            }); 
+        }
 });
 
 app.listen(port, () => {
