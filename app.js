@@ -59,7 +59,7 @@ app.post("/agregarPaciente", (req, res) => {
             res.status(400).send("Error");
         });
         try {
-            // generar csv agregando los campos y datos por comando dependiendo del SO
+            // generar csv agregando los campos y datos por comando en Windows
             exec('mycmd.cmd', (err, stdout, stderr) => {
                 if (err) {
                     console.error(err);
@@ -67,6 +67,10 @@ app.post("/agregarPaciente", (req, res) => {
                 }
                 console.log(stdout);
             });
+            // comando para MacOS
+            /*
+            exec(mongoexport --db unidascontigo --collection pacientes --fieldFile ./excel/fields.csv --type csv --out ./excel/Reporte.csv);
+            */
         } catch (err) {
             console.error(err);
         }

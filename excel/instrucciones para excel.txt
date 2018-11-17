@@ -1,0 +1,9 @@
+Si el excel muestra acentos de forma incorrecta:
+
+1. Click derecho en Reporte
+2. Ir a "Abrir con"
+3. Seleccionar Notepad/Bloc de notas
+4. Al abrirse el archivo, solo darle save/guardar
+5. Cerrar Notepad/Bloc de notas
+6. Abrir Reporte con Excel
+7. Deben aparecer las entradas con acentos
