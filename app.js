@@ -3,9 +3,7 @@ var upload = require('express-fileupload');
 var app = express();
 var port = 3000;
 var bodyParser = require('body-parser');
-var path = require('path');
-var fs = require('fs');
-var exec = require('child_process').exec;
+var { exec } = require('child_process');
 app.use(upload())
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'));
@@ -61,10 +59,14 @@ app.post("/agregarPaciente", (req, res) => {
             res.status(400).send("Error");
         });
         try {
-            // generar csv agregando los campos y datos por comando (macOS, no se si windows funcione)
-            var generaCSV = 'mongoexport --db unidascontigo --collection pacientes ' +
-            '--fieldFile ./excel/fields.csv --type csv --out ./excel/Reporte.csv';
-            exec(generaCSV);
+            // generar csv agregando los campos y datos por comando dependiendo del SO
+            exec('mycmd.cmd', (err, stdout, stderr) => {
+                if (err) {
+                    console.error(err);
+                    return;
+                }
+                console.log(stdout);
+            });
         } catch (err) {
             console.error(err);
         }
